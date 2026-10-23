@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Interactive Site</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000; /* Matches background if needed */
+    }
+
+    /* Outer box that hides the bottom bar */
+    .canva-crop-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* The iframe is made slightly taller than the screen so the bottom bar is pushed out of view */
+    .canva-crop-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% + 50px); /* Pushes the 50px Canva footer off the bottom edge */
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="canva-crop-container">
+    <iframe 
+      src="https://www.canva.com/design/DAHYzzzCBv4/fqAyowpgpwOJKv7PrNGGLw/view" 
+      allow="fullscreen">
+    </iframe>
+  </div>
+
+</body>
+</html>
