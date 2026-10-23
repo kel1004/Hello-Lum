@@ -3,43 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NormalPresentationForLum</title>
+  <title>My Website</title>
   <style>
-    body, html {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background-color: #000; /* Matches background if needed */
+      background-color: #000000; /* Match your background color */
     }
 
-    /* Outer box that hides the bottom bar */
-    .canva-crop-container {
+    .canva-wrapper {
       position: relative;
       width: 100vw;
       height: 100vh;
       overflow: hidden;
     }
 
-    /* The iframe is made slightly taller than the screen so the bottom bar is pushed out of view */
-    .canva-crop-container iframe {
+    /* Pushes the iframe down by 100px to completely hide the Canva control bar */
+    .canva-wrapper iframe {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: calc(100% + 50px); /* Pushes the 50px Canva footer off the bottom edge */
+      height: calc(100% + 100px);
       border: none;
+    }
+
+    /* A solid block at the very bottom to physically cover any flickering edges */
+    .blocker-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background-color: #000000; /* Match background (#ffffff if your slide is white) */
+      z-index: 9999;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
 
-  <div class="canva-crop-container">
+  <div class="canva-wrapper">
     <iframe 
+      loading="lazy" 
       src="https://www.canva.com/design/DAHYzzzCBv4/fqAyowpgpwOJKv7PrNGGLw/view?embed" 
+      allowfullscreen="allowfullscreen" 
       allow="fullscreen">
     </iframe>
+    <!-- This bar physically blocks the bottom edge -->
+    <div class="blocker-bar"></div>
   </div>
 
 </body>
