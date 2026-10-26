@@ -84,7 +84,8 @@
   <script>
     const music = document.getElementById('bg-music');
     const btn = document.getElementById('music-btn');
-
+    const audio = document.getElementById("bg-music");
+    
     function toggleMusic() {
       if (music.paused) {
         music.play();
@@ -94,6 +95,8 @@
         btn.innerHTML = '🔇 Play Music';
       }
     }
+    // Set volume to 10% (0.1) or 20% (0.2)
+    audio.volume = 0.1; 
   </script>
   
 </body>
