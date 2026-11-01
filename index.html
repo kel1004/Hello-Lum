@@ -15,7 +15,7 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background-color: #000000;
+      background-color: #000000; /* Match your background color */
     }
 
     .canva-wrapper {
@@ -25,28 +25,26 @@
       overflow: hidden;
     }
 
-    /* Keep iframe at 100% height so the Unmute button isn't cut off */
+    /* Pushes the iframe down by 100px to completely hide the Canva control bar */
     .canva-wrapper iframe {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: calc(100% + 100px);
       border: none;
     }
 
-    /* Covers the progress line, slide arrows, and right-side icons */
-    /* Leaves a 65px opening on the bottom-left for the Unmute icon */
-    .nav-shield {
+    /* A solid block at the very bottom to physically cover any flickering edges */
+    .blocker-bar {
       position: absolute;
       bottom: 0;
-      left: 65px; /* Leaves the bottom-left 65px open for the speaker button */
-      width: calc(100% - 65px);
-      height: 55px; /* Covers the bottom control bar and scrubber line */
-      background-color: #000000; /* Change to match your slide background color if preferred */
-      z-index: 99999;
-      pointer-events: auto; /* CRITICAL: Absorbs clicks so users cannot click the arrows or scrubber line */
-      cursor: default;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background-color: #000000; /* Match background (#ffffff if your slide is white) */
+      z-index: 9999;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -54,13 +52,13 @@
 
   <div class="canva-wrapper">
     <iframe 
+      loading="lazy" 
       src="https://www.canva.com/design/DAHYzzzCBv4/fqAyowpgpwOJKv7PrNGGLw/view?embed" 
       allowfullscreen="allowfullscreen" 
-      allow="autoplay; fullscreen">
+      allow="fullscreen">
     </iframe>
-    
-    <!-- Physically blocks clicks on the slide controls while leaving Unmute open -->
-    <div class="nav-shield"></div>
+    <!-- This bar physically blocks the bottom edge -->
+    <div class="blocker-bar"></div>
   </div>
 
 </body>
